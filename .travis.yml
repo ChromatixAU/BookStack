@@ -26,3 +26,4 @@ after_failure:
 
 script:
   - phpunit
+  - docker build -t bookstack .
