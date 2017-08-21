@@ -1,4 +1,5 @@
 # BookStack
+[![Build Status](https://travis-ci.org/ChromatixAU/BookStack.svg)](https://travis-ci.org/ChromatixAU/BookStack)
 
 This is the Chromatix version of the BookstackApp project, which is also
 buildable as a Docker image.
