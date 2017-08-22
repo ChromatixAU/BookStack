@@ -18,23 +18,23 @@ return [
 
     'mailgun'  => [
         'domain' => '',
-        'secret' => '',
+        'secret' => (''),
     ],
 
     'mandrill' => [
-        'secret' => '',
+        'secret' => env('MANDRILL_SECRET', false)),
     ],
 
     'ses'      => [
-        'key'    => '',
-        'secret' => '',
-        'region' => 'us-east-1',
+        'key'    => env('SES_KEY', false)),
+        'secret' => env('SES_SECRET', false),
+        'region' => env('SES_REGION', false),
     ],
 
     'stripe'   => [
         'model'  => BookStack\User::class,
-        'key'    => '',
-        'secret' => '',
+        'key'    => env('STRIPE_KEY', false),
+        'secret' => env('STRIPE_SECRET', false),
     ],
 
     'github'   => [
