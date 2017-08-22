@@ -4,8 +4,8 @@ This is the Chromatix version of the BookstackApp project, which is also
 buildable as a Docker image.
 
 ## Tagging
-So that we don't conflict with the existing tagging formats used by upstream,
-when we make deployment tags, the general format we use is:
+So that we don't conflict with the existing tagging formats used by the
+upstream repository, when we make deployment tags, the general format we use is:
 
 ```
 build-YYYYMMDD-NN # e.g. build-20170821-01
