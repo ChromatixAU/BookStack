@@ -1,5 +1,5 @@
 dist: trusty
-sudo: false
+sudo: required
 language: php
 php:
   - 7.0
@@ -26,3 +26,11 @@ after_failure:
 
 script:
   - phpunit
+  - docker build -t bookstack .
+
+notifications:
+  email: false
+  webhooks:
+    urls:
+    - https://chr-cicd.herokuapp.com/hooks/travis.php
+    on_start: always
