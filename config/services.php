@@ -22,11 +22,11 @@ return [
     ],
 
     'mandrill' => [
-        'secret' => env('MANDRILL_SECRET', false)),
+        'secret' => env('MANDRILL_SECRET', false),
     ],
 
     'ses'      => [
-        'key'    => env('SES_KEY', false)),
+        'key'    => env('SES_KEY', false),
         'secret' => env('SES_SECRET', false),
         'region' => env('SES_REGION', false),
     ],

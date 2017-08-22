@@ -1,10 +1,9 @@
 FROM php:7.1-apache
 
 ENV BOOKSTACK=BookStack \
-    BOOKSTACK_VERSION=0.17.4 \
-    BOOKSTACK_HOME="/var/www/bookstack" \
-    ARCHIVE_URL="https://github.com/ChromatixAU/BookStack/archive"
+    BOOKSTACK_HOME="/var/www/bookstack"
 
+# Install dependencies, and composer
 RUN apt-get update && apt-get install -y \
     git zlib1g-dev \
     libfreetype6-dev \
@@ -28,28 +27,23 @@ RUN apt-get update && apt-get install -y \
     --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install gd \
   && cd /var/www && curl -sS https://getcomposer.org/installer | php \
-  && mv /var/www/composer.phar /usr/local/bin/composer \
-  && wget ${ARCHIVE_URL}/v${BOOKSTACK_VERSION}.tar.gz -O ${BOOKSTACK}.tar.gz \
-  && tar -xf ${BOOKSTACK}.tar.gz \
-  && mv BookStack-${BOOKSTACK_VERSION} ${BOOKSTACK_HOME} \
-  && rm ${BOOKSTACK}.tar.gz  \
-  && cd $BOOKSTACK_HOME \
-  && composer install \
+  && mv -v /var/www/composer.phar /usr/local/bin/composer
+
+WORKDIR $BOOKSTACK_HOME
+RUN cd $BOOKSTACK_HOME
+COPY . .
+RUN composer install --no-dev --verbose \
   && chown -R www-data:www-data $BOOKSTACK_HOME \
   && apt-get -y autoremove \
   && apt-get clean \
   && rm -rf \
     /var/lib/apt/lists/* \
     /var/tmp/* \
-    /etc/apache2/sites-enabled/000-*.conf
-
-COPY php.ini /usr/local/etc/php/php.ini
-COPY bookstack.conf /etc/apache2/sites-enabled/bookstack.conf
-RUN a2enmod rewrite
-
-COPY docker-entrypoint.sh /
-
-WORKDIR $BOOKSTACK_HOME
+    /etc/apache2/sites-enabled/000-*.conf \
+  && mv -v docker-entrypoint.sh / \
+  && mv -v php.ini /usr/local/etc/php/php.ini \
+  && mv -v bookstack.conf /etc/apache2/sites-enabled/bookstack.conf \
+  && a2enmod rewrite
 
 EXPOSE 80
 
