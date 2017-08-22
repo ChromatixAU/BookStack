@@ -17,12 +17,12 @@ return [
     'callback_url' => env('APP_URL', false),
 
     'mailgun'  => [
-        'domain' => '',
-        'secret' => (''),
+        'domain' => env('MAILGUN_DOMAIN', false),
+        'secret' => env('MAILGUN_SECRET', false),
     ],
 
     'mandrill' => [
-        'secret' => env('MANDRILL_SECRET', false)),
+        'secret' => env('MANDRILL_SECRET', false),
     ],
 
     'ses'      => [
