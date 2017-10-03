@@ -16,7 +16,6 @@ appended after a hyphen.
 
 ## Attribution
 
-In addition to the [https://github.com/BookStackApp/BookStack#attribution](main BookStack attribution list),  
-We also:
+In addition to the [main BookStack attribution list](https://github.com/BookStackApp/BookStack#attribution), we also:
 
 * Based our Docker implementation off [https://github.com/solidnerd/docker-bookstack](solidnerd/docker-bookstack).
