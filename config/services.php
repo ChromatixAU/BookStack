@@ -23,8 +23,8 @@ return [
     'callback_url' => env('APP_URL', false),
 
     'mailgun'  => [
-        'domain' => '',
-        'secret' => '',
+	'domain' => env('MAILGUN_DOMAIN', false),
+        'secret' => env('MAILGUN_SECRET', false),
     ],
 
     'mandrill' => [
